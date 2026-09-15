@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Birthday Nancy</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="ambient" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <div id="confettiLayer" class="confetti-layer" aria-hidden="true"></div>
+    <div id="balloonLayer" class="balloon-layer" aria-hidden="true"></div>
+    <div id="sparkleLayer" class="sparkle-layer" aria-hidden="true"></div>
+
+    <audio id="bgMusic" loop>
+    <source src="../songs/Dooron Dooron (Official Video) - Paresh Pahuja Feat. Harleen Sethi  Shiv  Meghdeep  Vaibhav.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="birthdaysong" loop>
+    <source src="../songs/Happy Birthday Celebration Song  Party Song for a Special Birthday.mp3" type="audio/mpeg">
+    </audio>
+    <!-- <button id="musicToggle" class="music-toggle" type="button" aria-label="Toggle music" hidden>
+      <span class="music-icon">♪</span>
+    </button> -->
+    <button  id="musicToggle" class="music-toggle" type="button" aria-label="Toggle music" onclick="playMusic()"><span class="music-icon">♪</span></button>
+
+    <main id="app" class="app">
+      <section class="stage is-active welcome" data-step="1" aria-label="Birthday welcome">
+        <div class="fairy-lights" aria-hidden="true"></div>
+        <div class="stage-card">
+          <p class="kicker">A tiny surprise for the brightest soul</p>
+          <h1>Happy Birthday, Nancy <span>♥</span></h1>
+          <div class="cake-scene" aria-hidden="true">
+            <div class="balloon bunch-one"></div>
+            <div class="cake">
+              <div class="candle"></div>
+              <div class="cake-top"></div>
+              <div class="cake-base"></div>
+            </div>
+            <div class="balloon bunch-two"></div>
+          </div>
+          <button class="primary-btn gift-btn" type="button" data-next="2">
+            Open Your Gift <span>🎁</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="stage" data-step="2" aria-label="Special day">
+        <div class="stage-card compact">
+          <p class="kicker">Today belongs to you</p>
+          <h2>It's Your Special Day ✨</h2>
+          <button class="primary-btn" type="button" data-next="3">Next →</button>
+        </div>
+      </section>
+
+      <section class="stage" data-step="3" aria-label="Madam Jii">
+        <div class="stage-card compact tilted">
+          <p class="kicker">With full birthday protocol</p>
+          <h2>Have a look at it Madam Jii ✨</h2>
+          <button class="primary-btn" type="button" data-next="4">Next →</button>
+        </div>
+      </section>
+
+      <section class="stage" data-step="4" aria-label="Surprise preparation">
+        <div class="stage-card compact">
+          <p class="kicker">Deep breath. Smile ready.</p>
+          <h2>Ready For your Surprise? 👀🎁</h2>
+          <button class="primary-btn rocket-btn" type="button" data-next="5">Let's Go 🚀</button>
+        </div>
+      </section>
+
+      <section class="stage lights-stage" data-step="5" aria-label="Lights">
+        <div class="room-glow" aria-hidden="true"></div>
+        <div class="string-lights" aria-hidden="true">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+        <div class="stage-card compact glass">
+          <p class="kicker">The room is waiting</p>
+          <h2>The stage is All Set...</h2>
+          <button id="lightsButton" class="primary-btn light-btn" type="button">TURN ON LIGHTS 💡</button>
+          <button id="afterLightsButton" class="secondary-btn" type="button" data-next="6" hidden>Next →</button>
+        </div>
+      </section>
+
+      <section class="stage" data-step="6" aria-label="Music">
+        <div class="stage-card compact music-card">
+          <p class="kicker">Because every surprise needs a soundtrack</p>
+          <h2>Music makes it better... 🎵</h2>
+          <button id="playMusicButton" class="primary-btn" type="button" onclick="birthdaysong()">PLAY MUSIC 🎶</button>
+          <button id="afterMusicButton" class="secondary-btn" type="button" data-next="7" hidden>Next →</button>
+        </div>
+      </section>
+
+      <section class="stage" data-step="7" aria-label="Balloons">
+        <div class="stage-card compact">
+          <p class="kicker">A little color, a lot of joy</p>
+          <h2>Then let the colors fly! 🎈✨</h2>
+          <button id="playBalloonsButton" class="primary-btn" type="button">PLAY BALLOONS 🎈</button>
+          <button id="afterBalloonsButton" class="secondary-btn" type="button" data-next="8" hidden>Next →</button>
+        </div>
+      </section>
+
+      <section class="stage reveal-stage" data-step="8" aria-label="Birthday reveal">
+        <div class="stage-card reveal-card">
+          <button id="revealButton" class="red-gift" type="button" aria-label="Open birthday reveal">
+            <span class="gift-lid"></span>
+            <span class="gift-box"></span>
+            <strong>Tap Me</strong>
+          </button>
+
+          <div id="birthdayMessage" class="birthday-message" hidden>
+            <p class="kicker">Finally, the big moment</p>
+            <h2>HAPPY BIRTHDAY NANCY ♥🎂</h2>
+            <p>
+              Wishing you endless happiness, lots of smiles, beautiful memories and everything
+              you've ever wished for. Keep smiling and keep shining! ♥✨
+            </p>
+            <button class="primary-btn memories-btn" type="button" data-next="10">OUR MEMORIES 📸♥</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="stage gallery-stage" data-step="10" aria-label="Our memories">
+        <div class="gallery-shell">
+          <div class="gallery-header">
+            <p class="kicker">Our little wall of happiness</p>
+            <h2>Our Memories 📸♥</h2>
+            <p>Every picture here gets its own tiny spotlight, because Nancy deserves the full birthday treatment.</p>
+          </div>
+          <div id="galleryGrid" class="gallery-grid"></div>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
