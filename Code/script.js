@@ -1,14 +1,14 @@
 const imageFiles = [
-  "PICTURE1.jpg",
-  "PICTURE2.jpg",
-  "PICTURE3.jpg",
-  "PICTURE4.jpg",
-  "PICTURE5.jpg",
-  "PICTURE6.jpg",
-  "PICTURE7.jpg",
-  "PICTURE8.jpg",
-  "PICTURE9.jpg",
-  "PICTURE10.jpg"
+  "PICTURE1.JPG",
+  "PICTURE2.JPG",
+  "PICTURE3.JPG",
+  "PICTURE4.JPG",
+  "PICTURE5.JPG",
+  "PICTURE6.JPG",
+  "PICTURE7.JPG",
+  "PICTURE8.JPG",
+  "PICTURE9.JPG",
+  "PICTURE10.JPG"
 ];
 
 const memoryMessages = [
