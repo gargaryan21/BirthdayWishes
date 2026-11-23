@@ -674,7 +674,7 @@ h2 {
   }
 
   /* Keep the birthday message and its button inside short phone screens. */
-  .reveal-stage {
+  /*.reveal-stage {
     display: block;
     overflow-y: auto;
     padding: 0.6rem 0.75rem;
@@ -705,6 +705,7 @@ h2 {
     margin-top: 0.55rem;
     padding: 0.6rem 0.9rem;
   }
+  */
 }
 
 @media (prefers-reduced-motion: reduce) {
