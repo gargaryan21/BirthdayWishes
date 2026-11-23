@@ -32,6 +32,49 @@ body {
     linear-gradient(135deg, #fff2f7 0%, #fff8df 47%, #ebfbff 100%);
 }
 
+.panda-corners {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.panda,
+.bamboo {
+  position: absolute;
+  filter: drop-shadow(0 12px 14px rgba(49, 23, 43, 0.16));
+  user-select: none;
+}
+
+.panda {
+  font-size: clamp(3.7rem, 9vw, 6.7rem);
+  line-height: 1;
+  animation: pandaBob 4.2s ease-in-out infinite;
+}
+
+.panda-one {
+  left: clamp(0.35rem, 3vw, 2.5rem);
+  bottom: clamp(0.2rem, 3vw, 2rem);
+  rotate: -10deg;
+}
+
+.panda-two {
+  top: clamp(0.15rem, 2vw, 1.4rem);
+  right: clamp(0.25rem, 3vw, 2.4rem);
+  font-size: clamp(2.8rem, 6.5vw, 4.8rem);
+  animation-delay: -1.8s;
+}
+
+.bamboo {
+  color: #4b9b5e;
+  font-size: clamp(2.5rem, 6vw, 4.6rem);
+  opacity: 0.8;
+}
+
+.bamboo-one { top: 9%; left: 3%; rotate: -28deg; }
+.bamboo-two { right: 4%; bottom: 9%; rotate: 25deg; }
+
 button {
   font: inherit;
 }
@@ -535,6 +578,10 @@ h2 {
   to { transform: translate3d(18px, -95vh, 0); opacity: 0; }
 }
 
+@keyframes pandaBob {
+  50% { transform: translateY(-10px) rotate(3deg); }
+}
+
 @keyframes gentlePop {
   50% { transform: translateY(-7px); }
 }
@@ -569,7 +616,7 @@ h2 {
 
 @keyframes revealIn {
   from { opacity: 0; transform: translateY(24px) scale(0.92); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
+  to { opacity: 1; transform: translateY(calc(-1 * clamp(1rem, 4vh, 3.5rem))) scale(1); }
 }
 
 @keyframes cardIn {
@@ -608,6 +655,22 @@ h2 {
 
   .memory-card img {
     height: auto;
+  }
+
+  .panda-two,
+  .bamboo-two {
+    display: none;
+  }
+
+  .panda-one {
+    bottom: 0.35rem;
+    font-size: 3.3rem;
+  }
+
+  .bamboo-one {
+    top: 1.2rem;
+    left: 0.5rem;
+    font-size: 2.1rem;
   }
 }
 
