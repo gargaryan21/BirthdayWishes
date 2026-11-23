@@ -1,25 +1,22 @@
 const imageFiles = [
-  "Pic1.jpeg",
-  "PIC2 (1).jpeg",
-  "PIC2 (2).jpeg",
-  "PIC2 (3).jpeg",
-  "PIC2 (4).jpeg",
-  "PIC2 (5).jpeg",
-  "PIC2 (6).jpeg",
-  "PIC2 (7).jpeg",
-  "PIC2 (8).jpeg",
-  "PIC2 (9).jpeg",
-  "PIC2 (10).jpeg",
-  "PIC2 (11).jpeg",
-  "PIC2 (12).jpeg"
+  "PICTURE1.jpg",
+  "PICTURE2.jpg",
+  "PICTURE3.jpg",
+  "PICTURE4.jpg",
+  "PICTURE5.jpg",
+  "PICTURE6.jpg",
+  "PICTURE7.jpg",
+  "PICTURE8.jpg",
+  "PICTURE9.jpg",
+  "PICTURE10.jpg"
 ];
 
 const memoryMessages = [
-  "Some memories are simply priceless ♥",
-  "Look at this Madam Jii 😌",
+  "Dekhlena Tumara Kahi Parse na girjay. ♥",
+  "Mat Dekho Udar.Hero Idhar hai. 😌",
   "Good times + crazy people = perfect memories 😂",
-  "This one deserves a special place ♥",
-  "Moments that deserve to be remembered ✨",
+  "Yes I Know duppate ka shi size haI ♥",
+  "I Know you are practicing PT Excercise But Anyway Looking Adorable. ✨",
   "A smile worth saving forever",
   "Main character energy, birthday edition",
   "The kind of memory that warms the whole day",
@@ -35,6 +32,7 @@ const confettiLayer = document.querySelector("#confettiLayer");
 const balloonLayer = document.querySelector("#balloonLayer");
 const sparkleLayer = document.querySelector("#sparkleLayer");
 const musicToggle = document.querySelector("#musicToggle");
+const backgroundMusic = document.querySelector("#bgMusic");
 
 let currentStep = 1;
 let balloonTimer = null;
@@ -42,6 +40,32 @@ let audioContext = null;
 let musicGain = null;
 let musicInterval = null;
 let musicPlaying = false;
+let backgroundMusicStartSet = false;
+
+// Start Dooron Dooron as soon as the page is opened.  Some browsers block
+// audible autoplay, so the first tap/key press retries it automatically.
+function startBackgroundMusic() {
+  const playFromStartPoint = () => {
+    if (!backgroundMusicStartSet) {
+      backgroundMusic.currentTime = 15;
+      backgroundMusicStartSet = true;
+    }
+
+    backgroundMusic.play().catch(() => {
+      document.addEventListener("pointerdown", startBackgroundMusic, { once: true });
+      document.addEventListener("keydown", startBackgroundMusic, { once: true });
+    });
+  };
+
+  if (backgroundMusic.readyState >= HTMLMediaElement.HAVE_METADATA) {
+    playFromStartPoint();
+  } else {
+    backgroundMusic.addEventListener("loadedmetadata", playFromStartPoint, { once: true });
+    backgroundMusic.load();
+  }
+}
+
+document.addEventListener("DOMContentLoaded", startBackgroundMusic);
 
 document.addEventListener("click", (event) => {
   const nextButton = event.target.closest("[data-next]");
@@ -131,7 +155,7 @@ function renderGallery() {
 
     const image = document.createElement("img");
     image.src = `../Pictures/${encodeURIComponent(file).replaceAll("%2F", "/")}`;
-    image.alt = `Memory photo ${index + 1} for Nancy`;
+    image.alt = `Memory photo ${index + 1} for Gunnu`;
     image.loading = index < 4 ? "eager" : "lazy";
 
     const caption = document.createElement("figcaption");
@@ -253,11 +277,22 @@ window.addEventListener("beforeunload", () => {
   clearInterval(musicInterval);
 });
 function playMusic() {
-    document.getElementById("bgMusic").play();
+    startBackgroundMusic();
 }
 function birthdaysong() {
-   var music = document.getElementById("bgMusic");
-    music.pause();
-    music.currentTime = 0;
-    document.getElementById("birthdaysong").play();
+  backgroundMusic.pause();
+  const birthdaySong = document.getElementById("birthdaysong");
+
+  const playFromFiveSeconds = () => {
+    birthdaySong.currentTime = 5;
+    birthdaySong.play();
+  };
+
+  // The audio duration must be available before its playback position can change.
+  if (birthdaySong.readyState >= HTMLMediaElement.HAVE_METADATA) {
+    playFromFiveSeconds();
+  } else {
+    birthdaySong.addEventListener("loadedmetadata", playFromFiveSeconds, { once: true });
+    birthdaySong.load();
+  }
 }
